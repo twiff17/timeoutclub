@@ -3,11 +3,11 @@ package by.timeoutclub.fteam.model.error;
 public class ErrorResponse {
 
     private String message;
-    private String code;
+    private int status;
 
-    public ErrorResponse(String message, String code) {
+    public ErrorResponse(String message, int status) {
         this.message = message;
-        this.code = code;
+        this.status = status;
     }
 
     public String getMessage() {
@@ -18,11 +18,11 @@ public class ErrorResponse {
         this.message = message;
     }
 
-    public String getCode() {
-        return code;
+    public int getStatus() {
+        return status;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

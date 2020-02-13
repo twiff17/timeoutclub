@@ -17,7 +17,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpHeaders headers, HttpStatus status,
                                                                   WebRequest request) {
         return ResponseEntity.unprocessableEntity().body(new ErrorResponse("Player is not valid",
-                HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase()));
+                HttpStatus.UNPROCESSABLE_ENTITY.value()));
     }
 
 }
