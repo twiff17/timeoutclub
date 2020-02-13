@@ -3,7 +3,11 @@ package by.timeoutclub.fteam.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.hateoas.RepresentationModel;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
 
