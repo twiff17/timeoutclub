@@ -1,4 +1,4 @@
-package by.timeoutclub.fteam.model;
+package by.timeoutclub.fteam.model.entity;
 
 public class Team {
 

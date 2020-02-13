@@ -1,4 +1,4 @@
-package by.timeoutclub.fteam.model;
+package by.timeoutclub.fteam.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.hateoas.RepresentationModel;

@@ -1,4 +1,4 @@
-package by.timeoutclub.fteam.model;
+package by.timeoutclub.fteam.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -12,16 +12,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "game_events")
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private EventType type;
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "player_id", nullable = false)
     private Player player;
