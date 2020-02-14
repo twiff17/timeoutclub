@@ -1,6 +1,7 @@
 package by.timeoutclub.fteam.controller;
 
-import by.timeoutclub.fteam.model.Player;
+import by.timeoutclub.fteam.model.dto.PlayerStatistics;
+import by.timeoutclub.fteam.model.entity.Player;
 import by.timeoutclub.fteam.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,15 +25,18 @@ public class PlayerController {
     private PlayerService playerService;
 
     @GetMapping
-    @ResponseBody
     public List<Player> getPlayers() {
         return playerService.getAllPlayers();
     }
 
     @GetMapping("/{id}")
-    @ResponseBody
-    public Player getPlayers(@PathVariable("id") Integer playerId) {
+    public Player getPlayerById(@PathVariable("id") Integer playerId) {
         return playerService.getPlayerById(playerId);
+    }
+
+    @GetMapping("/{id}/statistics")
+    public PlayerStatistics getPlayerStatistics(@PathVariable("id") Integer playerId) {
+        return playerService.getPlayerStatistics(playerId);
     }
 
     @PostMapping

@@ -16,7 +16,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatus status,
                                                                   WebRequest request) {
-        return ResponseEntity.unprocessableEntity().body(new ErrorResponse("Player is not valid",
+        return ResponseEntity.unprocessableEntity().body(new ErrorResponse("Request is not valid",
                 HttpStatus.UNPROCESSABLE_ENTITY.value()));
     }
 
