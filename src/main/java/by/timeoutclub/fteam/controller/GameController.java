@@ -1,5 +1,6 @@
 package by.timeoutclub.fteam.controller;
 
+import by.timeoutclub.fteam.model.dto.EventDTO;
 import by.timeoutclub.fteam.model.entity.Event;
 import by.timeoutclub.fteam.model.entity.Game;
 import by.timeoutclub.fteam.service.GameService;
@@ -40,7 +41,7 @@ public class GameController {
 
     @PostMapping("/{gameId}/events")
     @ResponseStatus(HttpStatus.CREATED)
-    public Event addEvent(@RequestBody @Valid Event event, @PathVariable Integer gameId) {
+    public Event addEvent(@RequestBody @Valid EventDTO event, @PathVariable Integer gameId) {
         return gameService.addEvent(event, gameId);
     }
 }

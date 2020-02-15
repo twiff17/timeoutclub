@@ -4,6 +4,7 @@ import by.timeoutclub.fteam.dao.EventRepository;
 import by.timeoutclub.fteam.dao.GameRepository;
 import by.timeoutclub.fteam.dao.PlayerRepository;
 import by.timeoutclub.fteam.exception.NotFoundException;
+import by.timeoutclub.fteam.model.dto.EventDTO;
 import by.timeoutclub.fteam.model.entity.Event;
 import by.timeoutclub.fteam.model.entity.Game;
 import by.timeoutclub.fteam.model.entity.Player;
@@ -32,13 +33,15 @@ public class GameService {
         return gameRepository.findById(gameId).orElseThrow(() -> new NotFoundException("Game was not found"));
     }
 
-    public Event addEvent(Event event, Integer gameId) {
-        Player player = playerRepository.findById(event.getPlayer().getId()).orElseThrow(() -> new NotFoundException(
+    public Event addEvent(EventDTO eventDto, Integer gameId) {
+        Player player = playerRepository.findById(eventDto.getPlayerId()).orElseThrow(() -> new NotFoundException(
                 "Player was not found"));
         Game game = gameRepository.findById(gameId).orElseThrow(() -> new NotFoundException("Game was not found"));
 
+        Event event = new Event();
         event.setPlayer(player);
         event.setGame(game);
+        event.setType(eventDto.getType());
 
         return eventRepository.save(event);
     }

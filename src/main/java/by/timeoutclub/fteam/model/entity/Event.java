@@ -21,10 +21,8 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotNull
     @Enumerated(EnumType.STRING)
     private EventType type;
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "player_id", nullable = false)
     private Player player;
