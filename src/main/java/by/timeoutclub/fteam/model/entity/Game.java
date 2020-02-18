@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,11 +18,17 @@ import java.util.List;
 public class Game extends RepresentationModel<Game> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull
+    @Size(min = 2, message = "Competitor must contain at least 2 symbols")
     private String competitor;
+    @Min(0)
     private int scored;
+    @Min(0)
     private int conceded;
+    // TODO define Date format
+    @NotNull
     private LocalDate date;
     @JsonManagedReference
     @OneToMany(mappedBy = "game")

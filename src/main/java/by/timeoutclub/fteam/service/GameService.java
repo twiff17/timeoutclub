@@ -33,6 +33,10 @@ public class GameService {
         return gameRepository.findById(gameId).orElseThrow(() -> new NotFoundException("Game was not found"));
     }
 
+    public Game addGame(Game game){
+        return gameRepository.save(game);
+    }
+
     public Event addEvent(EventDTO eventDto, Integer gameId) {
         Player player = playerRepository.findById(eventDto.getPlayerId()).orElseThrow(() -> new NotFoundException(
                 "Player was not found"));

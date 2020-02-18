@@ -39,6 +39,12 @@ public class GameController {
         return game;
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Game addGame(@RequestBody @Valid Game game){
+        return gameService.addGame(game);
+    }
+
     @PostMapping("/{gameId}/events")
     @ResponseStatus(HttpStatus.CREATED)
     public Event addEvent(@RequestBody @Valid EventDTO event, @PathVariable Integer gameId) {
