@@ -24,11 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/players").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/games").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/games/**").hasAnyRole("ADMIN")
                 .antMatchers("/", "/**").permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and()
                 .csrf().disable()
                 .formLogin().disable();
-        ;
     }
 }

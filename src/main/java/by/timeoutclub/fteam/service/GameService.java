@@ -16,14 +16,17 @@ import java.util.List;
 @Service
 public class GameService {
 
-    @Autowired
     private GameRepository gameRepository;
-
-    @Autowired
     private PlayerRepository playerRepository;
+    private EventRepository eventRepository;
 
     @Autowired
-    private EventRepository eventRepository;
+    public GameService(GameRepository gameRepository, PlayerRepository playerRepository,
+                       EventRepository eventRepository) {
+        this.gameRepository = gameRepository;
+        this.playerRepository = playerRepository;
+        this.eventRepository = eventRepository;
+    }
 
     public List<Game> getGames() {
         return gameRepository.findAll();
@@ -33,7 +36,7 @@ public class GameService {
         return gameRepository.findById(gameId).orElseThrow(() -> new NotFoundException("Game was not found"));
     }
 
-    public Game addGame(Game game){
+    public Game addGame(Game game) {
         return gameRepository.save(game);
     }
 
